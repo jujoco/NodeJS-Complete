@@ -1,27 +1,26 @@
-const http = require('http');
-const fs = require('fs');
+const path = require('path');
+const express = require('express');
+const bodyParser = require('body-parser');
 
-const server = http.createServer((req, res) => {
-  const url = req.url;
-  if (url === '/') {
-    res.write('<html>');
-    res.write('<head><title>HomePage</title></head>');
-    res.write('<body><form action="/message" method="POST"><input type="type" name="message"><button type="submit">Send</button></form></body>');
-    res.write('</html>');
-    return res.end();
-  }
-  if (url === '/message' && req.method === 'POST') {
-    fs.writeFileSync('message.txt', 'DUMMY');
-    res.statusCode = 302;
-    res.setHeader('Location', '/');
-    return res.end();
-  }
-  res.setHeader('Content-Type', 'text/html');
-  res.write('<html>');
-  res.write('<head><title>my page</title></head>');
-  res.write('<body><h1>hello world</h1></body>');
-  res.write('</html>');
-  res.end();
+const app = express();
+
+const port = 3000;
+const hostname = '127.0.0.1';
+
+app.set('view engine', 'ejs');
+app.set('views', 'views');
+
+const adminRoutes = require('./routes/admin');
+const shopRoutes = require('./routes/shop');
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/admin', adminRoutes.routes);
+app.use(shopRoutes);
+
+app.use((req, res, next) => {
+  res.status(404).render('404', { pageTitle: 'Page Not Found', path: '/' });
 });
 
-server.listen(3000);
+app.listen(3000, hostname, () => console.log(`Server listening on http://${hostname}:${port}/`));
