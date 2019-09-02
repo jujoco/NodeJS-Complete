@@ -28,12 +28,14 @@
     "mysql2": "^1.6.5",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-router-dom": "^5.0.1",
     "sequelize": "^5.13.1"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
     "nodemon": "^1.19.1",
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.7"

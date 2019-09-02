@@ -1,11 +1,11 @@
 const path = require('path');
-const DIST_DIR = path.join(__dirname, '/public');
+const DIST_DIR = path.join(__dirname, '/public/React_public');
 
 module.exports = {
-  entry: `./views/React App/index.js`,
+  entry: `./views/React_App/index.js`,
   output: {
-    filename: 'bundle.js',
     path: `${DIST_DIR}`,
+    filename: 'bundle.js',
   },
   module: {
     rules: [
