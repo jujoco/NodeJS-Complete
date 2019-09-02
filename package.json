@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "build": "webpack -d -w"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,16 @@
     "ejs": "^2.6.2",
     "express": "^4.17.1",
     "mysql2": "^1.6.5",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
     "sequelize": "^5.13.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "nodemon": "^1.19.1",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.7"
   }
 }
