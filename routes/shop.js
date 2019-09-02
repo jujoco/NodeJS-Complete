@@ -1,5 +1,9 @@
 const express = require('express');
 
+// EJS Controllers:
+// const shopController = require('../controllers/EJS_controllers/shop');
+
+// React Controllers:
 const shopController = require('../controllers/shop');
 
 const router = express.Router();

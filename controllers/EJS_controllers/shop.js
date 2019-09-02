@@ -1,4 +1,4 @@
-const Product = require('../models/product');
+const Product = require('../../models/product');
 
 exports.getProducts = (req, res, next) => {
   Product.findAll()
@@ -30,8 +30,11 @@ exports.getProduct = (req, res, next) => {
 exports.getIndex = (req, res, next) => {
   Product.findAll()
     .then(products => {
-      console.log(products);
-      res.send('hello');
+      res.render('shop/index', {
+        prods: products,
+        pageTitle: 'Shop',
+        path: '/'
+      });
     })
     .catch(err => {
       console.log(err);

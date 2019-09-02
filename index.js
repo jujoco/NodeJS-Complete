@@ -23,11 +23,15 @@ const app = express();
 const port = 3000;
 const hostname = '127.0.0.1';
 
-app.set('view engine', 'ejs');
-app.set('views', 'views/EJS App');
+// EJS Template engine: Uncomment this and comment out React app.
+// app.set('view engine', 'ejs');
+// app.set('views', 'views/EJS_App');
+// app.use(express.static(path.join(__dirname, 'public')));
+
+// React app: Uncomment this and comment out EJS Template.
+app.use(express.static(path.join(__dirname, 'public/React_public')));
 
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
 
 app.use((req, res, next) => {
   User.findByPk(1)
@@ -40,7 +44,6 @@ app.use((req, res, next) => {
 
 app.use('/admin', adminRoutes);
 app.use(shopRoutes);
-
 app.use(errorController.get404);
 
 Product.belongsTo(User, { constraints: true, onDelete: 'CASCADE' });
